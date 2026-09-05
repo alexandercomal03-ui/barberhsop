@@ -1,0 +1,11 @@
+{
+  "name": "barbershop-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "backend": "cd backend && node server.js",
+    "web": "cd web && npm run dev",
+    "admin": "cd admin && npx expo start --web --port 3000",
+    "install:all": "cd backend && npm install && cd ../web && npm install && cd ../admin && npm install"
+  }
+}

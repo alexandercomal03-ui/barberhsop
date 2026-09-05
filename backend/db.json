@@ -1,0 +1,11 @@
+{
+  "services": [
+    { "id": 1, "name": "Potong Rambut Klasik", "description": "Segala model potongan pria, keramas dan styling akhir.", "price": 40000, "duration": 30 },
+    { "id": 2, "name": "Potong + Cukur Jenggot", "description": "Potong rambut, garis jenggot dibentuk, handuk hangat.", "price": 60000, "duration": 45 },
+    { "id": 3, "name": "Fade & Detailing", "description": "Fade presisi, blending halus, garis tepi bersih.", "price": 55000, "duration": 40 },
+    { "id": 4, "name": "Hairlight", "description": "Highlight rambut 3x proses, hasil natural.", "price": 140000, "duration": 90 },
+    { "id": 5, "name": "Full Block 1 Warna", "description": "2x bleaching, 1x pewarnaan menyeluruh.", "price": 180000, "duration": 120 },
+    { "id": 6, "name": "Blok 3 Warna", "description": "5x proses, 2x bleaching, 3x pewarnaan.", "price": 210000, "duration": 150 }
+  ],
+  "bookings": []
+}
