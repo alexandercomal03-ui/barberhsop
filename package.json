@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "start": "node backend/server.js",
     "backend": "cd backend && node server.js",
     "web": "cd web && npm run dev",
     "admin": "cd admin && npx expo start --web --port 3000",
     "install:all": "cd backend && npm install && cd ../web && npm install && cd ../admin && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "cors": "^2.8.5"
   }
 }
