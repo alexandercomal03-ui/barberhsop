@@ -1,30 +1,41 @@
 import { barbershop } from "../data/dummyData";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Scissors, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-[#0a0a0a] border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-3">{barbershop.name}</h3>
-            <p className="text-sm text-gray-500">{barbershop.description}</p>
+            <div className="flex items-center gap-2 mb-4">
+              <Scissors className="w-5 h-5 text-amber-500" />
+              <h3 className="text-lg font-bold text-white">{barbershop.name}</h3>
+            </div>
+            <p className="text-sm text-gray-500 leading-relaxed">{barbershop.description}</p>
           </div>
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-3">Jam Buka</h4>
+            <h4 className="flex items-center gap-2 text-sm font-bold text-white mb-4">
+              <Clock size={14} className="text-amber-500" /> Jam Buka
+            </h4>
             <p className="text-sm text-gray-500">{barbershop.hours.weekday}</p>
             <p className="text-sm text-gray-500">{barbershop.hours.weekend}</p>
           </div>
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-3">Kontak</h4>
-            <p className="text-sm text-gray-500 mb-2">{barbershop.address}</p>
-            <a href={`https://wa.me/${barbershop.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-amber-600 hover:text-amber-700 font-semibold">
+            <h4 className="flex items-center gap-2 text-sm font-bold text-white mb-4">
+              <MapPin size={14} className="text-amber-500" /> Kontak
+            </h4>
+            <p className="text-sm text-gray-500 mb-3">{barbershop.address}</p>
+            <a href={`https://wa.me/${barbershop.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-amber-500 hover:text-amber-400 font-semibold transition-colors">
               <MessageCircle size={16} /> WhatsApp {barbershop.phone}
             </a>
           </div>
         </div>
-        <div className="mt-10 pt-6 border-t border-gray-100 text-center">
-          <p className="text-xs text-gray-400">{barbershop.copyright}</p>
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-600">{barbershop.copyright}</p>
+          <div className="flex items-center gap-1 text-xs text-gray-600">
+            <Scissors size={12} className="text-amber-500/50" />
+            <span>Designed with style</span>
+          </div>
         </div>
       </div>
     </footer>
