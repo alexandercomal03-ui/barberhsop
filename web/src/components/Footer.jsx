@@ -7,8 +7,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="mb-4 inline-block bg-[#1a1a1a] rounded-xl px-4 py-3 border border-white/10">
-              <img src="/logo-seen.png" alt="Seen Barbershop" className="h-20 w-auto object-contain" />
+            <div className="mb-4">
+              <img src="/logo-seen.png" alt="Seen Barbershop" className="h-24 w-auto object-contain" style={{ mixBlendMode: 'lighten' }} />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">{barbershop.description}</p>
           </div>
