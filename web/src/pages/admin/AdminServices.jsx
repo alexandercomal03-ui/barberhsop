@@ -29,17 +29,45 @@ export default function AdminServices() {
 
   const formatRupiah = (n) => 'Rp ' + n.toLocaleString('id-ID')
 
+  const compressImage = (file, maxWidth = 800, quality = 0.7) => {
+    return new Promise((resolve, reject) => {
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')
+      const img = new Image()
+
+      img.onload = () => {
+        let { width, height } = img
+        if (width > maxWidth) {
+          height = (height * maxWidth) / width
+          width = maxWidth
+        }
+        canvas.width = width
+        canvas.height = height
+        ctx.drawImage(img, 0, 0, width, height)
+        canvas.toBlob(
+          (blob) => resolve(blob),
+          'image/jpeg',
+          quality
+        )
+      }
+
+      img.onerror = reject
+      img.src = URL.createObjectURL(file)
+    })
+  }
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0]
     if (!file) return
 
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Ukuran gambar maksimal 5MB')
+    if (file.size > 10 * 1024 * 1024) {
+      alert('Ukuran gambar maksimal 10MB')
       return
     }
 
     setUploading(true)
     try {
+      const compressed = await compressImage(file, 800, 0.7)
       const reader = new FileReader()
       reader.onload = (event) => {
         const base64 = event.target.result
@@ -51,9 +79,10 @@ export default function AdminServices() {
         setUploading(false)
         alert('Gagal membaca file')
       }
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(compressed)
     } catch (err) {
       setUploading(false)
+      alert('Gagal compress gambar, coba URL langsung')
       console.error(err)
     }
   }
@@ -242,11 +271,18 @@ export default function AdminServices() {
                 ) : (
                   <div className="space-y-2">
                     {/* File Upload Button */}
-                    <label className="flex items-center justify-center gap-2 w-full py-8 border-2 border-dashed border-slate-600 rounded-lg cursor-pointer hover:border-amber-500/50 hover:bg-slate-700/50 transition-colors">
-                      <Upload className="w-5 h-5 text-slate-400" />
-                      <span className="text-sm text-slate-400">
-                        {uploading ? 'Mengupload...' : 'Klik untuk upload foto'}
-                      </span>
+                    <label className={`flex items-center justify-center gap-2 w-full py-8 border-2 border-dashed rounded-lg transition-colors ${uploading ? 'border-amber-500 bg-amber-500/10' : 'border-slate-600 hover:border-amber-500/50 hover:bg-slate-700/50'}`}>
+                      {uploading ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
+                          <span className="text-sm text-amber-400">Mengcompress gambar...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-5 h-5 text-slate-400" />
+                          <span className="text-sm text-slate-400">Klik untuk upload foto</span>
+                        </>
+                      )}
                       <input
                         type="file"
                         accept="image/*"
