@@ -1,5 +1,5 @@
 import { barbershop } from "../data/dummyData";
-import { MessageCircle, MapPin, Clock, Instagram, Scissors } from "lucide-react";
+import { MessageCircle, MapPin, Clock, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -7,9 +7,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Scissors className="w-5 h-5 text-amber-500" />
-              <h3 className="text-lg font-bold text-white">{barbershop.name}</h3>
+            <div className="mb-4">
+              <img src="/logo-seen.png" alt="Seen Barbershop" className="h-24 w-auto object-contain" style={{ mixBlendMode: 'lighten' }} />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">{barbershop.description}</p>
           </div>
