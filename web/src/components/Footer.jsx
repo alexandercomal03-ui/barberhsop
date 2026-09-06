@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="mb-4">
-              <img src="/logo-seen.png" alt="Seen Barbershop" className="h-24 w-auto object-contain" style={{ mixBlendMode: 'lighten' }} />
+              <span className="text-2xl font-black text-white tracking-tight">SEEN<span className="text-amber-500">BARBER</span></span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">{barbershop.description}</p>
           </div>
