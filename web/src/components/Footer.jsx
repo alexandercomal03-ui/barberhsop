@@ -1,5 +1,5 @@
 import { barbershop } from "../data/dummyData";
-import { MessageCircle, Scissors, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Scissors, MapPin, Clock, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -34,6 +34,9 @@ export default function Footer() {
             </div>
             <a href={`https://wa.me/${barbershop.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-amber-500 hover:text-amber-400 font-semibold transition-colors">
               <MessageCircle size={16} /> WhatsApp {barbershop.phone}
+            </a>
+            <a href="https://www.instagram.com/seenbarbershop?stkn=ZWJrdHVycmxmamE2&utm_source=qr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-pink-500 font-semibold transition-colors mt-3">
+              <Instagram size={16} /> @seenbarbershop
             </a>
           </div>
         </div>
