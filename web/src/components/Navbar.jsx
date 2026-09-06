@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Scissors } from "lucide-react";
-import { barbershop } from "../data/dummyData";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +15,8 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 bg-[#0a0a0a]/90 backdrop-blur-md z-50 border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white">
-            <Scissors className="w-5 h-5 text-amber-500" />
-            <span>{barbershop.name}</span>
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/logo-seen.png" alt="Seen Barbershop" className="h-10 w-auto object-contain" />
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
