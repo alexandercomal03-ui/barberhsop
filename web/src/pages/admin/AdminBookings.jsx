@@ -18,8 +18,8 @@ export default function AdminBookings() {
   const loadData = async () => {
     try {
       const [bRes, sRes] = await Promise.all([fetchBookings(), fetchServices()])
-      setBookings(bRes.value || [])
-      setServices(sRes.value || [])
+      setBookings(Array.isArray(bRes) ? bRes : (bRes.value || []))
+      setServices(Array.isArray(sRes) ? sRes : (sRes.value || []))
     } catch (err) {
       console.error(err)
     } finally {
@@ -28,12 +28,14 @@ export default function AdminBookings() {
   }
 
   const getServiceName = (serviceId) => {
-    const svc = services.find(s => s.id === serviceId)
+    const numericId = parseInt(serviceId)
+    const svc = services.find(s => s.id === numericId || s.id === serviceId || s.id === Number(serviceId))
     return svc ? svc.name : 'Tidak diketahui'
   }
 
   const getServicePrice = (serviceId) => {
-    const svc = services.find(s => s.id === serviceId)
+    const numericId = parseInt(serviceId)
+    const svc = services.find(s => s.id === numericId || s.id === serviceId || s.id === Number(serviceId))
     return svc ? svc.price : 0
   }
 

@@ -17,7 +17,7 @@ export default function AdminServices() {
   const loadData = async () => {
     try {
       const res = await fetchServices()
-      setServices(res.value || [])
+      setServices(Array.isArray(res) ? res : (res.value || []))
     } catch (err) {
       console.error(err)
     } finally {
@@ -60,8 +60,9 @@ export default function AdminServices() {
         setServices(prev => prev.map(s => s.id === editing.id ? { ...s, ...data } : s))
       } else {
         const res = await createService(data)
-        if (res.value) {
-          setServices(prev => [...prev, res.value])
+        const newService = res.id ? res : (res.value || null)
+        if (newService) {
+          setServices(prev => [...prev, newService])
         } else {
           await loadData()
         }

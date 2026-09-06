@@ -8,7 +8,7 @@ export default function Booking() {
   const [searchParams] = useSearchParams();
   const preselectedService = searchParams.get("layanan") || "";
   const [services, setServices] = useState([]);
-  const [formData, setFormData] = useState({ service: preselectedService, date: "", time: "", name: "", whatsapp: "" });
+  const [formData, setFormData] = useState({ serviceId: preselectedService, date: "", time: "", name: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
   const [bookingId, setBookingId] = useState("");
   const [availableSlots, setAvailableSlots] = useState([]);
@@ -25,7 +25,10 @@ export default function Booking() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await createBooking(formData);
+    const result = await createBooking({
+      ...formData,
+      serviceId: parseInt(formData.serviceId),
+    });
     setBookingId(result.id);
     setSubmitted(true);
   };
@@ -59,9 +62,9 @@ export default function Booking() {
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
           <div>
             <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-2"><Scissors size={16} /> Pilih Layanan</label>
-            <select name="service" value={formData.service} onChange={handleChange} required className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+            <select name="serviceId" value={formData.serviceId} onChange={handleChange} required className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
               <option value="">-- Pilih Layanan --</option>
-              {services.map((s) => (<option key={s.id} value={s.name}>{s.name} — Rp{s.price.toLocaleString("id-ID")}</option>))}
+              {services.map((s) => (<option key={s.id} value={s.id}>{s.name} — Rp{s.price.toLocaleString("id-ID")}</option>))}
             </select>
           </div>
           <div>
@@ -86,7 +89,7 @@ export default function Booking() {
           </div>
           <div>
             <label className="text-sm font-semibold text-gray-700 mb-2 block">Nomor WhatsApp</label>
-            <input type="tel" name="whatsapp" value={formData.whatsapp} onChange={handleChange} required placeholder="08xxxxxxxxxx" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="08xxxxxxxxxx" className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500" />
           </div>
           <button type="submit" disabled={!formData.time} className="w-full bg-amber-600 text-white py-3 rounded-full font-semibold hover:bg-amber-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed">
             Konfirmasi Booking

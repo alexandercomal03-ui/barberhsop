@@ -16,8 +16,8 @@ export default function AdminDashboard({ onNavigate }) {
   const loadData = async () => {
     try {
       const [bRes, sRes] = await Promise.all([fetchBookings(), fetchServices()])
-      setBookings(bRes.value || [])
-      setServices(sRes.value || [])
+      setBookings(Array.isArray(bRes) ? bRes : (bRes.value || []))
+      setServices(Array.isArray(sRes) ? sRes : (sRes.value || []))
     } catch (err) {
       console.error(err)
     } finally {
@@ -31,7 +31,8 @@ export default function AdminDashboard({ onNavigate }) {
   const totalRevenue = bookings
     .filter(b => b.status === 'done')
     .reduce((sum, b) => {
-      const svc = services.find(s => s.id === b.serviceId)
+      const numericId = parseInt(b.serviceId)
+      const svc = services.find(s => s.id === numericId || s.id === b.serviceId || s.id === Number(b.serviceId))
       return sum + (svc ? svc.price : 0)
     }, 0)
 

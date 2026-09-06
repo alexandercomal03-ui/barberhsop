@@ -27,7 +27,7 @@ export default function Layanan() {
               <p className="text-sm text-gray-500 mb-4">{service.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-lg font-bold text-amber-600">Rp{service.price.toLocaleString("id-ID")}</span>
-                <Link to={`/booking?layanan=${encodeURIComponent(service.name)}`} className="text-sm font-semibold text-gray-600 hover:text-amber-600 transition-colors">Book →</Link>
+                <Link to={`/booking?layanan=${service.id}`} className="text-sm font-semibold text-gray-600 hover:text-amber-600 transition-colors">Book →</Link>
               </div>
             </div>
           ))}
