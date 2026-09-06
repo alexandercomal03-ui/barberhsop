@@ -24,7 +24,9 @@ export async function updateService(id, data) {
 }
 
 export async function deleteService(id) {
-  const res = await fetch(`${API_URL}/services/${id}`, { method: "DELETE" });
+  const res = await fetch(`${API_URL}/services/${id}`, {
+    method: "DELETE",
+  });
   return res.json();
 }
 
@@ -43,6 +45,8 @@ export async function updateBooking(id, data) {
 }
 
 export async function deleteBooking(id) {
-  const res = await fetch(`${API_URL}/bookings/${id}`, { method: "DELETE" });
+  const res = await fetch(`${API_URL}/bookings/${id}`, {
+    method: "DELETE",
+  });
   return res.json();
 }
