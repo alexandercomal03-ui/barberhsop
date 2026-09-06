@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://barberhsop-production.up.railway.app/api";
 
 export async function fetchServices() {
   const res = await fetch(`${API_URL}/services`);
