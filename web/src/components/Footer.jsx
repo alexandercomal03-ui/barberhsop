@@ -15,16 +15,23 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="flex items-center gap-2 text-sm font-bold text-white mb-4">
-              <Clock size={14} className="text-amber-500" /> Jam Buka
+              <Clock size={14} className="text-amber-500" /> Jam Operasional
             </h4>
             <p className="text-sm text-gray-500">{barbershop.hours.weekday}</p>
             <p className="text-sm text-gray-500">{barbershop.hours.weekend}</p>
+            <p className="text-xs text-gray-600 mt-2">*Jam bisa berubah, konfirmasi via WhatsApp</p>
           </div>
           <div>
             <h4 className="flex items-center gap-2 text-sm font-bold text-white mb-4">
-              <MapPin size={14} className="text-amber-500" /> Kontak
+              <MapPin size={14} className="text-amber-500" /> Area Layanan
             </h4>
-            <p className="text-sm text-gray-500 mb-3">{barbershop.address}</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {barbershop.areas.map((area) => (
+                <span key={area} className="px-3 py-1 bg-white/5 border border-white/5 rounded-full text-xs text-gray-400">
+                  {area}
+                </span>
+              ))}
+            </div>
             <a href={`https://wa.me/${barbershop.whatsapp}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-amber-500 hover:text-amber-400 font-semibold transition-colors">
               <MessageCircle size={16} /> WhatsApp {barbershop.phone}
             </a>
@@ -34,7 +41,7 @@ export default function Footer() {
           <p className="text-xs text-gray-600">{barbershop.copyright}</p>
           <div className="flex items-center gap-1 text-xs text-gray-600">
             <Scissors size={12} className="text-amber-500/50" />
-            <span>Designed with style</span>
+            <span>Tukang Cukur Panggilan #1 di Solo</span>
           </div>
         </div>
       </div>

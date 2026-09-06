@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { testimonials } from "../data/dummyData";
-import { Star } from "lucide-react";
+import { Star, MapPin } from "lucide-react";
 
 export default function CTA() {
   return (
@@ -15,10 +15,10 @@ export default function CTA() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Siap tampil lebih rapi?</h2>
-          <p className="text-gray-400 mb-8">Amankan jadwalmu hari ini.</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">Siap potong rambut?</h2>
+          <p className="text-gray-400 mb-8">Pesan sekarang, kami datang ke rumah Anda.</p>
           <Link to="/booking" className="inline-block bg-amber-500 text-black px-8 py-4 rounded-full text-sm font-bold hover:bg-amber-400 transition-colors">
-            Booking sekarang
+            Pesan Sekarang
           </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
@@ -30,7 +30,12 @@ export default function CTA() {
                 ))}
               </div>
               <p className="text-gray-300 mb-4 italic leading-relaxed">"{t.message}"</p>
-              <p className="text-sm text-amber-400 font-semibold">— {t.name}, langganan {t.since}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-amber-400 font-semibold">— {t.name}</p>
+                <span className="flex items-center gap-1 text-xs text-gray-600">
+                  <MapPin size={10} /> {t.area}
+                </span>
+              </div>
             </div>
           ))}
         </div>

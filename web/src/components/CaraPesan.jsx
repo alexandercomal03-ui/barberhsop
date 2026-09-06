@@ -1,5 +1,4 @@
 import { steps } from "../data/dummyData";
-import { ArrowRight } from "lucide-react";
 
 export default function CaraPesan() {
   return (
@@ -8,8 +7,8 @@ export default function CaraPesan() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <span className="text-amber-500 text-sm font-semibold tracking-widest uppercase">Cara Pesan</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-4">Tiga langkah, kursi aman.</h2>
-          <p className="text-gray-500">Gampang banget.</p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-3 mb-4">Gampang banget.</h2>
+          <p className="text-gray-500">Tiga langkah, selesai.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, i) => (
