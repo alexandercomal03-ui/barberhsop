@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { RefreshCw, Check, X, Clock, Trash2, Filter } from 'lucide-react'
-import { fetchBookings, fetchServices, updateBooking, deleteBooking } from '../utils/api'
+import { RefreshCw, Check, X, Clock, Trash2, CalendarDays } from 'lucide-react'
+import { fetchBookings, fetchServices, updateBooking, deleteBooking } from '../../utils/api'
 
-export default function Bookings() {
+export default function AdminBookings() {
   const [bookings, setBookings] = useState([])
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
@@ -29,7 +29,7 @@ export default function Bookings() {
 
   const getServiceName = (serviceId) => {
     const svc = services.find(s => s.id === serviceId)
-    return svc ? svc.name : 'Unknown'
+    return svc ? svc.name : 'Tidak diketahui'
   }
 
   const getServicePrice = (serviceId) => {

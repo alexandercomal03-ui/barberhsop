@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { CalendarDays, Scissors, TrendingUp, Clock, ChevronRight } from 'lucide-react'
-import { fetchBookings, fetchServices } from '../utils/api'
+import { fetchBookings, fetchServices } from '../../utils/api'
 
-export default function Dashboard({ onNavigate }) {
+export default function AdminDashboard({ onNavigate }) {
   const [bookings, setBookings] = useState([])
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
@@ -53,7 +53,7 @@ export default function Dashboard({ onNavigate }) {
         <div className="bg-slate-800 rounded-xl p-4">
           <div className="flex items-center gap-2 text-slate-400 text-sm mb-1">
             <CalendarDays className="w-4 h-4" />
-            Booking Hari Ini
+            Hari Ini
           </div>
           <p className="text-3xl font-bold text-amber-400">{todayBookings.length}</p>
         </div>
@@ -67,7 +67,7 @@ export default function Dashboard({ onNavigate }) {
         <div className="bg-slate-800 rounded-xl p-4">
           <div className="flex items-center gap-2 text-slate-400 text-sm mb-1">
             <TrendingUp className="w-4 h-4" />
-            Total Selesai
+            Selesai
           </div>
           <p className="text-3xl font-bold text-green-400">
             {bookings.filter(b => b.status === 'done').length}
@@ -115,7 +115,7 @@ export default function Dashboard({ onNavigate }) {
                   'bg-amber-500/20 text-amber-400'
                 }`}>
                   {b.status === 'done' ? 'Selesai' :
-                   b.status === 'cancelled' ? 'Dibatalkan' : 'Menunggu'}
+                   b.status === 'cancelled' ? 'Batal' : 'Baru'}
                 </span>
               </div>
             ))}
