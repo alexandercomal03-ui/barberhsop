@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Scissors } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-black text-white tracking-tight">SEEN<span className="text-amber-500">BARBER</span></span>
+            <Scissors className="w-5 h-5 text-amber-500" />
+            <span className="text-lg font-bold text-white">SeenBarber</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (

@@ -7,9 +7,6 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="mb-4">
-              <span className="text-2xl font-black text-white tracking-tight">SEEN<span className="text-amber-500">BARBER</span></span>
-            </div>
             <p className="text-sm text-gray-500 leading-relaxed">{barbershop.description}</p>
           </div>
           <div>
@@ -42,7 +39,6 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-600">{barbershop.copyright}</p>
           <div className="flex items-center gap-1 text-xs text-gray-600">
-            <Scissors size={12} className="text-amber-500/50" />
             <span>Tukang Cukur Panggilan #1 di Solo</span>
           </div>
         </div>
